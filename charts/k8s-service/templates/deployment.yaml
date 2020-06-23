@@ -239,6 +239,9 @@ spec:
               mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
               readOnly: true
           {{- end }}
+          {{- if .Values.mainContainer.volumeMounts }}
+{{ toYaml .Values.mainContainer.volumeMounts | indent 12 }}
+          {{- end }}
           {{- range $name, $value := .Values.configMaps }}
             {{- if eq $value.as "volume" }}
             - name: {{ $name }}-volume
