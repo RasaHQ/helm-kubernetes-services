@@ -1,0 +1,35 @@
+name: Lint and Test Charts
+
+on:
+  push:
+    branches:
+    - 'master'
+    - '[0-9]+.[0-9]+.x'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+env:
+  CHART: charts/k8s-service
+
+jobs:
+  lint-test:
+    name: Lint the chart
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Install Helm
+      run: |
+        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+    - name: Lint chart using Helm CLI
+      run: |
+        helm lint --strict ${CHART}
+    - name: Run chart-testing (lint)
+      id: lint
+      uses: helm/chart-testing-action@v1.0.0-rc.2
+      with:
+        command: lint
+        config: ct.yaml

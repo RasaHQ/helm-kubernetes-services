@@ -147,7 +147,7 @@ sideCarContainers: {}
 # for allowing you to find any issues early.
 # The expected keys of the canary spec are:
 #   - enabled        (bool) (required) : Whether or not the canary deployment should be created. If false, no canary deployment will be created.
-#   - containerImage (map)  (required) : A map that specifies the application container and tag to be managed by the canary deployment. 
+#   - containerImage (map)  (required) : A map that specifies the application container and tag to be managed by the canary deployment.
 #                                        This has the same structure as containerImage.
 #   - replicaCount   (int)             : The number of pods that should be managed by the canary deployment. Defaults to 1 if unset.
 #
@@ -521,3 +521,30 @@ google:
   # Use a Google Managed Certificate. By default, turn off.
   managedCertificate:
     enabled: false
+
+# https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+## init containers
+# example
+#
+#initContainers:
+#  - name: init-myservice
+#    image: busybox:1.28
+#    command: ['sh', '-c', "until nslookup myservice.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
+#  - name: init-mydb
+#    image: busybox:1.28
+#    command: ['sh', '-c', "until nslookup mydb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done"]
+#    volumeMounts:
+#    - mountPath: /cache
+#      name: cache-volume
+initContainers: {}
+
+
+# https://kubernetes.io/docs/concepts/storage/volumes/
+## volumes
+#
+# example
+#volumes:
+#  - name: cache-volume
+#    emptyDir: {}
+
+volumes: {}
