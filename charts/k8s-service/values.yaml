@@ -548,3 +548,8 @@ initContainers: {}
 #    emptyDir: {}
 
 volumes: {}
+
+# https://kubernetes.io/docs/concepts/storage/volumes/
+# mounts volumes in the main container
+mainContainer:
+  volumeMounts: {}
