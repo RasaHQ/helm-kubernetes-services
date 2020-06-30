@@ -556,3 +556,9 @@ mainContainer:
 
 # https://kubernetes.io/docs/concepts/containers/runtime-class/
 runtimeClassName: ""
+
+# create cluster role binding
+clusterRoleBinding:
+  create: false
+  subjects: {}
+  role: ""
