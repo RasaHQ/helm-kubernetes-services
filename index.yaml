@@ -2,6 +2,18 @@ apiVersion: v1
 entries:
   k8s-service:
   - apiVersion: v1
+    created: "2020-06-30T09:04:35.679366132Z"
+    description: A Helm chart to package your application container for Kubernetes
+    digest: 390f983d5165cbee8f1d762135b4f38983df7c21a31b5fe867ad52b5cbdc491f
+    home: https://github.com/RasaHQ/helm-kubernetes-services
+    maintainers:
+    - email: t.czekajlo@rasa.com
+      name: tczekajlo
+    name: k8s-service
+    urls:
+    - https://github.com/RasaHQ/helm-kubernetes-services/releases/download/k8s-service-0.0.4/k8s-service-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v1
     created: "2020-06-30T08:36:20.524801713Z"
     description: A Helm chart to package your application container for Kubernetes
     digest: 2b42791df97ee01c4a90939079fc79f041558ac5cb5599e647840611e04cd9a3
